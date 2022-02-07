@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public float baseSpeed = 40.0f;
+    public float baseSpeed = 17.0f;
     
 
 
@@ -23,7 +23,7 @@ public class BallController : MonoBehaviour
     {
         string colliderTag = collision.gameObject.tag;
         
-        if(colliderTag == "asteroid")
+        if(colliderTag != "Ship")
         {
             
             
@@ -37,8 +37,8 @@ public class BallController : MonoBehaviour
     private void FixedUpdate()
     {
         float delta = Time.fixedDeltaTime * 1000;
-        rigidBody.velocity = (transform.up * (baseSpeed *  delta));
-        Debug.Log(rigidBody.velocity);
+        rigidBody.velocity = (transform.up * (baseSpeed)*delta);
+        
     }
 
 }

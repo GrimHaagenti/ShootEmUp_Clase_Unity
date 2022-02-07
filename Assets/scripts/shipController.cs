@@ -5,31 +5,35 @@ using UnityEngine;
 public class shipController : MonoBehaviour
 {
 
-    enum Direction { FORWARD, BACKWARDS, STILL };
-    enum Rotation { LEFT, RIGHT, NO_R };
+    public enum DirectionX {LEFT, RIGHT, NONEX };
+    public enum DirectionY { FORWARD, BACKWARDS, LEFT, RIGHT, NONEY};
+
+
 
     private Rigidbody2D rb2d;
     private Animator animator;
-    private Direction shipDirection;
-    private Rotation shipRotation;
-    private float acceleration;
+    private DirectionX shipDirectionX;
+    private DirectionY shipDirectionY;
+   
+    
     private Vector3 forwVec;
     private Vector3 rotation;
     private int thrustParamID;
-    
 
 
+    bool moving = false;
 
     public GameObject ball;
-
+    GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
 
         rb2d = GetComponent<Rigidbody2D>();
-        shipDirection = Direction.STILL;
-        acceleration = 0f;
+        shipDirectionX = DirectionX.NONEX;
+        shipDirectionY = DirectionY.NONEY;
+      
         thrustParamID = Animator.StringToHash("Thrust");
 
         
@@ -39,30 +43,66 @@ public class shipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool moving = false;
-        if (Input.GetKey(KeyCode.UpArrow))
-        {shipDirection = Direction.FORWARD; }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            shipDirection = Direction.BACKWARDS;
-        }
-        else
-        {
-            shipDirection = Direction.STILL;
-        }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+
+        if (InputManager.Instance.ButtonDown[(int)GameDirections.RIGHT] == true)
         {
-            rotation = new Vector3(0.0f, 0.0f, 3.0f);
+            shipDirectionX = DirectionX.RIGHT;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        if (InputManager.Instance.ButtonReleased[(int)GameDirections.RIGHT] == true) { shipDirectionX = DirectionX.NONEX; }
+
+
+
+
+        if (InputManager.Instance.ButtonDown[(int)GameDirections.LEFT] == true)
         {
-            rotation = new Vector3(0.0f, 0.0f, -3.0f);
+            shipDirectionX = DirectionX.LEFT;
         }
-        else
+        if (InputManager.Instance.ButtonReleased[(int)GameDirections.LEFT] == true) { shipDirectionX = DirectionX.NONEX; }
+
+
+
+        if (InputManager.Instance.ButtonDown[(int)GameDirections.UP] == true)
         {
-            rotation = new Vector3(0.0f, 0.0f, 0.0f);
+            shipDirectionY = DirectionY.FORWARD;
         }
+        if (InputManager.Instance.ButtonReleased[(int)GameDirections.UP] == true) { shipDirectionY = DirectionY.NONEY; }
+
+
+
+
+
+        if (InputManager.Instance.ButtonDown[(int)GameDirections.DOWN] == true)
+        {
+            shipDirectionY = DirectionY.BACKWARDS;
+        }
+        if (InputManager.Instance.ButtonReleased[(int)GameDirections.DOWN] == true) { shipDirectionY = DirectionY.NONEY; }
+
+
+        
+        //if (Input.GetKey(KeyCode.UpArrow))
+        //{shipDirection = Direction.FORWARD; }
+        //else if (Input.GetKey(KeyCode.DownArrow))
+        //{
+        //    shipDirection = Direction.BACKWARDS;
+        //}
+        //else
+        //{
+        //    shipDirection = Direction.STILL;
+        //}
+
+        //if (Input.GetKey(KeyCode.LeftArrow))
+        //{
+        //    rotation = new Vector3(0.0f, 0.0f, 3.0f);
+        //}
+        //else if (Input.GetKey(KeyCode.RightArrow))
+        //{
+        //    rotation = new Vector3(0.0f, 0.0f, -3.0f);
+        //}
+        //else
+        //{
+        //    rotation = new Vector3(0.0f, 0.0f, 0.0f);
+        //}
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -70,26 +110,12 @@ public class shipController : MonoBehaviour
             Destroy(bullet, 1.0f);
         }
 
+       
+       
 
-        switch (shipDirection)
-        {
-            case Direction.FORWARD:
-                acceleration = 15f;
-                moving = true;
-                break;
 
-            case Direction.BACKWARDS:
-                acceleration = -10f;
-                moving = false;
-                break;
-
-            case Direction.STILL:
-                acceleration = 0;
-                moving = false;
-                break;
-
-        }
         
+
         animator.SetBool(thrustParamID,moving);
 
 
@@ -100,10 +126,49 @@ public class shipController : MonoBehaviour
     }
     void FixedUpdate()
         {
-        float delta = Time.fixedDeltaTime* 100;
-        rb2d.AddForce((transform.up * acceleration)*delta);
 
-        rb2d.transform.Rotate(rotation);
-        }
+
+        float delta = Time.fixedDeltaTime* 100;
+        Vector2 motion = new Vector2(0,0);
+
+                    switch (shipDirectionX)
+                {
+                    case DirectionX.NONEX:
+                        motion.x = 0;
+                        moving = false;
+                        break;
+
+                    case DirectionX.LEFT:
+                        motion.x = -1;
+                        break;
+
+                    case DirectionX.RIGHT:
+                        motion.x = 1;
+                        break;
+                } 
+        
+                    switch (shipDirectionY)
+                {
+                    case DirectionY.FORWARD:
+                        motion.y = 1;
+                        moving = true;
+                        break;
+
+                    case DirectionY.BACKWARDS:
+                        motion.y = -1;
+                        moving = false;
+                        break;
+
+                    case DirectionY.NONEY:
+                        motion.y = 0;
+                        moving = false;
+                        break;
+                }
+        
+                motion = motion.normalized;
+            
+            rb2d.velocity =  motion * 60 *delta ;
+            rb2d.velocity = (transform.up * (gm.baseSpeed * delta)); 
+    }
     
 }

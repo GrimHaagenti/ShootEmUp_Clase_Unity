@@ -8,6 +8,8 @@ TagManager:
   - Ship
   - BG
   - asteroid
+  - onCamera
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - UI
   - player
   - bullet
-  - 
-  - 
+  - enemies
+  - onCameraTrigger
   - 
   - 
   - 

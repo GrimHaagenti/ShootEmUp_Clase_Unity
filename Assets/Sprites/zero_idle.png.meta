@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: 01421ec90da8b48419ceefda4374daf5
+guid: 9ddf545d60587f740b27f81bda83f47a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7691294901476699688
-    second: spaceship_0
+      213: -2515946959223214043
+    second: zero_idle_0
   - first:
-      213: -1317505059173679881
-    second: spaceship_1
+      213: 7431943464376916255
+    second: zero_idle_1
   - first:
-      213: 7269162308753140182
-    second: spaceship_2
+      213: 2082902894126404664
+    second: zero_idle_2
   - first:
-      213: -5718544294835766462
-    second: spaceship_3
+      213: 44572162138961177
+    second: zero_idle_3
   - first:
-      213: 4178291952565100957
-    second: spaceship_4
+      213: -5768191641188676516
+    second: zero_idle_4
+  - first:
+      213: -3135147845422140059
+    second: zero_idle_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -58,7 +61,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 1
@@ -142,13 +145,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spaceship_0
+      name: zero_idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 43
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82eaa4176f7fcba60800000000000000
-      internalID: 7691294901476699688
+      spriteID: 520b6c5129f851dd0800000000000000
+      internalID: -2515946959223214043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spaceship_1
+      name: zero_idle_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 43
         y: 0
-        width: 16
-        height: 16
+        width: 43
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fc3c2e012847bde0800000000000000
-      internalID: -1317505059173679881
+      spriteID: f19d8f86431932760800000000000000
+      internalID: 7431943464376916255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spaceship_2
+      name: zero_idle_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 86
         y: 0
-        width: 16
-        height: 16
+        width: 43
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,20 +201,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d9a3eb2b9041e460800000000000000
-      internalID: 7269162308753140182
+      spriteID: 83499028525f7ec10800000000000000
+      internalID: 2082902894126404664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spaceship_3
+      name: zero_idle_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 129
         y: 0
-        width: 16
-        height: 16
+        width: 43
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24b3af11346a3a0b0800000000000000
-      internalID: -5718544294835766462
+      spriteID: 915f923352a5e9000800000000000000
+      internalID: 44572162138961177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spaceship_4
+      name: zero_idle_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 172
         y: 0
-        width: 16
-        height: 16
+        width: 43
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,8 +243,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d912480b4664cf930800000000000000
-      internalID: 4178291952565100957
+      spriteID: c5c4296734443ffa0800000000000000
+      internalID: -5768191641188676516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zero_idle_5
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 0
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 565384335a7bd74d0800000000000000
+      internalID: -3135147845422140059
       vertices: []
       indices: 
       edges: []
