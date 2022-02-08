@@ -30,34 +30,22 @@ public class enemy_manager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        for (int x = 0; x < enemies.Length; x++)
-        {
-            if (enemies[x] != null)
-            {
-                
-
-            }
-
-        }
-
-    }
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "onCamera")
         {
+
             for (int x = 0; x < enemies.Length; x++)
             {
                
+                    enemies[x].gameObject.SetActive(true);
+               
 
-                
-                enemies[x].gameObject.SetActive(true);
-                
+
             }
+
         }
-        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

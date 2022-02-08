@@ -11,9 +11,15 @@ public class GameManager : MonoBehaviour
     public float interval = 2f;
     public float timer = 0.0f;
 
+    public static int score = 0;
+    public static bool on_boss;
+    public static bool on_position;
+
     // Start is called before the first frame update
     void Awake()
     {
+        on_position = false;
+        on_boss = false;
         if (Instance == null)
         {
           
@@ -30,11 +36,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= interval)
+        if (on_boss != true)
         {
-            float delta = Time.fixedDeltaTime * 1000;
-            GameManager.baseSpeed = Mathf.Lerp(GameManager.baseSpeed, 6.0f, 0.01f);
+            timer += Time.deltaTime;
+            if (timer >= interval)
+            {
+                float delta = Time.fixedDeltaTime * 1000;
+                GameManager.baseSpeed = Mathf.Lerp(GameManager.baseSpeed, 6.0f, 0.01f);
+            }
         }
     }
+
+
+    
 }

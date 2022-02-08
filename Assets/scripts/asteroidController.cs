@@ -52,8 +52,6 @@ public class asteroidController : MonoBehaviour
            
            
          
-            Debug.Log(collision.GetContact(0).point);
-
 
             Destroy(this.gameObject);
             

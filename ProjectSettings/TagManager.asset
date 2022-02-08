@@ -11,6 +11,8 @@ TagManager:
   - onCamera
   - enemy
   - tilemap
+  - bossTrigger
+  - boss
   layers:
   - Default
   - TransparentFX
