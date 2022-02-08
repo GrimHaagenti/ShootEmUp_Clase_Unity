@@ -106,8 +106,9 @@ public class shipController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject bullet = Instantiate(ball, transform.position, transform.rotation);
-            Destroy(bullet, 1.0f);
+            GameObject bullet = Instantiate(ball, transform.position, transform.rotation,this.transform);
+            Destroy(bullet, 2.0f);
+            
         }
 
        
@@ -128,7 +129,7 @@ public class shipController : MonoBehaviour
         {
 
 
-        float delta = Time.fixedDeltaTime* 100;
+        float delta = Time.fixedDeltaTime* 1000;
         Vector2 motion = new Vector2(0,0);
 
                     switch (shipDirectionX)
@@ -164,11 +165,13 @@ public class shipController : MonoBehaviour
                         moving = false;
                         break;
                 }
-        
+               
                 motion = motion.normalized;
-            
-            rb2d.velocity =  motion * 60 *delta ;
-            rb2d.velocity = (transform.up * (gm.baseSpeed * delta)); 
+        Vector3 vector3 = new Vector3(motion.x * 6 * delta, (motion.y  * 70) + (transform.up.y *GameManager.baseSpeed ) * delta)  ;
+        rb2d.velocity = vector3;
+               
+
     }
-    
+   
 }
+

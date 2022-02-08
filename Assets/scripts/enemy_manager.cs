@@ -6,24 +6,42 @@ public class enemy_manager : MonoBehaviour
 {
     private int childrenNum;
     enemyController[] enemies;
+
+
+    public enum formation {PIRAMID, WAVE}
+
+    public formation current_form = formation.PIRAMID;
     // Start is called before the first frame update
     void Start()
     {
         
        enemies = this.GetComponentsInChildren<enemyController>();
        Debug.Log(enemies.Length);
+       
+        if (enemies.Length == 5)
+        {
+            current_form = formation.PIRAMID;
+        }
+        else { current_form = formation.WAVE; }
         for (int x = 0; x < enemies.Length; x++)
         {
             enemies[x].gameObject.SetActive(false);
 
         }
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        for (int x = 0; x < enemies.Length; x++)
+        {
+            if (enemies[x] != null)
+            {
+                
+
+            }
+
+        }
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,6 +50,9 @@ public class enemy_manager : MonoBehaviour
         {
             for (int x = 0; x < enemies.Length; x++)
             {
+               
+
+                
                 enemies[x].gameObject.SetActive(true);
                 
             }
@@ -44,8 +65,10 @@ public class enemy_manager : MonoBehaviour
         {
             for (int x = 0; x < enemies.Length; x++)
             {
-                enemies[x].gameObject.SetActive(false);
-
+                if (enemies[x] != null)
+                {
+                    enemies[x].gameObject.SetActive(false);
+                }
             }
         }
     }

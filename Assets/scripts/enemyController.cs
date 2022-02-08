@@ -24,9 +24,10 @@ public class enemyController : MonoBehaviour
     private void FixedUpdate()
     {
         float delta = Time.fixedDeltaTime * 100;
-        Vector2 motion = new Vector2(0, 0);
-       
-            motion.y = -20;
+        //Vector2 motion = new Vector2(0, 0);
+        Vector2 motion = new Vector2(Mathf.Sin(Time.time) * 50, 0);
+      
+        motion.y = -20;
        
         rigidBody.velocity = motion * delta;
     }
@@ -41,7 +42,7 @@ public class enemyController : MonoBehaviour
             Destroy(this.gameObject);
 
         }
-        
+        Debug.Log("AAAAAAAAAAAAA");
       
 
     }
